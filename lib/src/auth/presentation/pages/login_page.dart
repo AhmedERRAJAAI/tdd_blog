@@ -1,30 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:tdd_blog/core/color_pallete.dart';
-import 'package:tdd_blog/src/auth/presentation/pages/login_page.dart';
+import 'package:tdd_blog/src/auth/presentation/pages/signup_page.dart';
 import 'package:tdd_blog/src/auth/presentation/widgets/auth_field.dart';
 
 import '../widgets/auth_gredient_btn.dart';
 
-class SignUpPage extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   static route() => MaterialPageRoute(
-        builder: (context) => const SignUpPage(),
+        builder: (context) => const LoginPage(),
       );
-  const SignUpPage({super.key});
+  const LoginPage({super.key});
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _LoginPageState extends State<LoginPage> {
   final formKey = GlobalKey();
   final emailController = TextEditingController();
-  final nameController = TextEditingController();
   final passwordController = TextEditingController();
 
   @override
   void dispose() {
     emailController.dispose();
-    nameController.dispose();
     passwordController.dispose();
     super.dispose();
   }
@@ -42,37 +40,32 @@ class _SignUpPageState extends State<SignUpPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 const Text(
-                  "Sign Up.",
+                  "Sign In.",
                   style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 30),
                 AuthField(hintText: "Email", controller: emailController),
                 const SizedBox(height: 10),
-                AuthField(
-                  hintText: "Name",
-                  controller: nameController,
-                ),
-                const SizedBox(height: 10),
                 AuthField(hintText: "Password", controller: passwordController, isObscureText: true),
                 const SizedBox(height: 30),
                 const AuthGredientBtn(
-                  btnText: "Sign Up",
+                  btnText: "Sign in",
                 ),
                 const SizedBox(height: 30),
                 GestureDetector(
                   onTap: () {
                     Navigator.push(
                       context,
-                      LoginPage.route(),
+                      SignUpPage.route(),
                     );
                   },
                   child: RichText(
                     text: TextSpan(
-                      text: "Already have an account?",
+                      text: "Don't have an account?",
                       style: Theme.of(context).textTheme.titleMedium,
                       children: [
                         TextSpan(
-                          text: " Sign In",
+                          text: " Sign Up",
                           style: Theme.of(context).textTheme.titleMedium?.copyWith(
                                 color: AppPallete.gradient2,
                                 fontWeight: FontWeight.bold,

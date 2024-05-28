@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tdd_blog/src/auth/presentation/pages/signup_page.dart';
+import 'package:tdd_blog/src/auth/presentation/pages/login_page.dart';
 import 'package:tdd_blog/core/theme.dart';
 
 void main() {
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'TDD TUTORIEL',
       theme: AppTheme.darkThemeMode,
-      home: SignUpPage(),
+      home: LoginPage(),
     );
   }
 }
