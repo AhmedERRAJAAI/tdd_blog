@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tdd_blog/core/color_pallete.dart';
+import 'package:tdd_blog/core/theme/color_pallete.dart';
 
 class AuthGredientBtn extends StatelessWidget {
   final String btnText;

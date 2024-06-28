@@ -1,6 +1,6 @@
 # tdd_blog
 
-A new Flutter project.
+An educational flutter project where blog application was built following the best practices for clean architecture and implimenting TDD
 
 ## Getting Started
 
