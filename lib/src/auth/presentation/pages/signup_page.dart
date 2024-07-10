@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tdd_blog/core/theme/color_pallete.dart';
+import 'package:tdd_blog/src/auth/presentation/bloc/auth_bloc.dart';
 import 'package:tdd_blog/src/auth/presentation/pages/login_page.dart';
 import 'package:tdd_blog/src/auth/presentation/widgets/auth_field.dart';
 
@@ -16,7 +18,7 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  final formKey = GlobalKey();
+  final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final nameController = TextEditingController();
   final passwordController = TextEditingController();
@@ -55,8 +57,19 @@ class _SignUpPageState extends State<SignUpPage> {
                 const SizedBox(height: 10),
                 AuthField(hintText: "Password", controller: passwordController, isObscureText: true),
                 const SizedBox(height: 30),
-                const AuthGredientBtn(
+                AuthGredientBtn(
                   btnText: "Sign Up",
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      context.read<AuthBloc>().add(
+                            AuthSignUp(
+                              email: emailController.value.toString().trim(),
+                              name: nameController.value.toString().trim(),
+                              password: passwordController.value.toString().trim(),
+                            ),
+                          );
+                    }
+                  },
                 ),
                 const SizedBox(height: 30),
                 GestureDetector(
